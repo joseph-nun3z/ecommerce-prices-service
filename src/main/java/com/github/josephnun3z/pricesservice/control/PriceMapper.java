@@ -1,5 +1,6 @@
 package com.github.josephnun3z.pricesservice.control;
 
+import com.github.josephnun3z.pricesservice.boundary.CreatePriceDto;
 import com.github.josephnun3z.pricesservice.boundary.FinalPriceDto;
 import com.github.josephnun3z.pricesservice.entity.Price;
 import org.mapstruct.Mapper;
@@ -13,5 +14,7 @@ public interface PriceMapper {
 
     @Mapping(target = PROP_FINAL_PRICE, source = PROP_PRICE)
     FinalPriceDto finalPriceFrom(Price source);
+
+    Price priceFrom(CreatePriceDto source);
 
 }
