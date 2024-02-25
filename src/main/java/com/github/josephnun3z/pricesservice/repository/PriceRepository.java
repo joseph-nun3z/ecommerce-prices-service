@@ -17,8 +17,8 @@ public interface PriceRepository extends ReactiveCrudRepository<Price, Long> {
             WHERE :dateTime BETWEEN p.start_date AND p.end_date
             AND p.product_id = :productId
             AND p.brand_id = :brandId
-            ORDER BY p.priority
-            DESC LIMIT 1
+            ORDER BY p.priority DESC
+            LIMIT 1
             """
     )
     Mono<Price> findTopByDateTimeProductAndBrand(LocalDateTime dateTime, Long productId, Integer brandId);

@@ -9,6 +9,8 @@ import reactor.core.publisher.Mono;
 
 import java.time.LocalDateTime;
 
+import static org.springframework.http.ResponseEntity.notFound;
+
 @RestController
 public class FinalPriceResource {
 
@@ -19,15 +21,14 @@ public class FinalPriceResource {
     }
 
     @GetMapping("/final-price")
-    public Mono<ResponseEntity<FinalPriceDto>> recommendedPrice(
-            @RequestParam("startDate") String dateTime,
-            @RequestParam("productId") Long productId,
-            @RequestParam("brandId") Integer brandId
+    public Mono<ResponseEntity<FinalPriceDto>> finalPrice(
+        @RequestParam("startDate") String dateTime,
+        @RequestParam("productId") Long productId,
+        @RequestParam("brandId") Integer brandId
     ) {
-        return finalPriceService.findPrice(
-            LocalDateTime.parse(dateTime),
-            productId,
-            brandId
-        ).map(ResponseEntity::ok);
+        LocalDateTime parsedDateTime = LocalDateTime.parse(dateTime);
+        return finalPriceService.findFinalPriceFor(parsedDateTime, productId, brandId)
+            .map(ResponseEntity::ok)
+            .defaultIfEmpty(notFound().build());
     }
 }

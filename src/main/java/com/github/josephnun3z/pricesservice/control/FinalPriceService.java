@@ -18,7 +18,7 @@ public class FinalPriceService {
         this.priceMapper = priceMapper;
     }
 
-    public Mono<FinalPriceDto> findPrice(LocalDateTime dateTime, Long productId, Integer brandId) {
+    public Mono<FinalPriceDto> findFinalPriceFor(LocalDateTime dateTime, Long productId, Integer brandId) {
         return priceRepository.findTopByDateTimeProductAndBrand(dateTime, productId, brandId)
             .map(priceMapper::finalPriceFrom);
     }
