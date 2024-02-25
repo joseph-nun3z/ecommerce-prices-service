@@ -12,9 +12,9 @@ public class EcommercePricesServiceApplication {
 
     /*
     TODO:
-        test setup ---------------------------------------> [IN_PROGRESS]
-        5 test cases -------------------------------------> [PENDING]
-        rest of the application --------------------------> [PENDING]
+        test setup ---------------------------------------> [DONE]
+        5 test cases -------------------------------------> [DONE]
+        rest of the application --------------------------> [IN_PROGRESS]
         test passes --------------------------------------> [PENDING]
         extras:
             Auth with JWT --------------------------------> [PENDING]
