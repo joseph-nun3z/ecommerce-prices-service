@@ -1,0 +1,22 @@
+[
+  {
+    "productId": 1001,
+    "brandId": 1,
+    "priceList": 1,
+    "startDate": "2024-01-01T00:00:00",
+    "endDate": "2024-12-31T23:59:59",
+    "price": 29.95,
+    "priority": 1,
+    "currency": "EUR"
+  },
+  {
+    "productId": 1002,
+    "brandId": 1,
+    "priceList": 2,
+    "startDate": "2024-01-01T00:00:00",
+    "endDate": "2024-06-30T23:59:59",
+    "price": 34.95,
+    "priority": 1,
+    "currency": "EUR"
+  }
+]
