@@ -5,6 +5,6 @@ public final class UriFixtures {
     public static final String URI_RECOMMENDED_PRICE;
 
     static {
-        URI_RECOMMENDED_PRICE = "/recommended-price";
+        URI_RECOMMENDED_PRICE = "/final-price";
     }
 }

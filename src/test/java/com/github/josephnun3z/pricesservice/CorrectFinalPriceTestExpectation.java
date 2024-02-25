@@ -1,12 +1,12 @@
 package com.github.josephnun3z.pricesservice;
 
-import com.github.josephnun3z.pricesservice.boundary.RecommendedPriceDto;
+import com.github.josephnun3z.pricesservice.boundary.FinalPriceDto;
 
 import java.util.function.Consumer;
 
-public record CorrectPriceRecommendationTestExpectation(
+public record CorrectFinalPriceTestExpectation(
     Integer testCaseNumber,
-    RecommendedPriceDto expectedPrice,
+    FinalPriceDto expectedPrice,
     Long productId,
     Integer brandId,
     String startDate
@@ -18,7 +18,7 @@ public record CorrectPriceRecommendationTestExpectation(
 
     public static final class Builder {
         public Integer testCaseNumber;
-        public RecommendedPriceDto recommendedPrice;
+        public FinalPriceDto expectedPrice;
         public Long productId;
         public Integer brandId;
         public String startDate;
@@ -28,10 +28,10 @@ public record CorrectPriceRecommendationTestExpectation(
             return this;
         }
 
-        public CorrectPriceRecommendationTestExpectation createExpectation() {
-            return new CorrectPriceRecommendationTestExpectation(
+        public CorrectFinalPriceTestExpectation createExpectation() {
+            return new CorrectFinalPriceTestExpectation(
                 testCaseNumber,
-                recommendedPrice,
+                expectedPrice,
                 productId,
                 brandId,
                 startDate

@@ -3,7 +3,7 @@ package com.github.josephnun3z.pricesservice;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-@SpringBootApplication
+@SpringBootApplication(scanBasePackages = "com.github.josephnun3z.pricesservice")
 public class EcommercePricesServiceApplication {
 
     public static void main(String[] args) {
@@ -14,8 +14,9 @@ public class EcommercePricesServiceApplication {
     TODO:
         test setup ---------------------------------------> [DONE]
         5 test cases -------------------------------------> [DONE]
-        rest of the application --------------------------> [IN_PROGRESS]
-        test passes --------------------------------------> [PENDING]
+        rest of the application --------------------------> [DONE]
+        tests passes -------------------------------------> [DONE]
+        documentation ------------------------------------> [IN_PROGRESS]
         extras:
             Auth with JWT --------------------------------> [PENDING]
             API doc --------------------------------------> [PENDING]

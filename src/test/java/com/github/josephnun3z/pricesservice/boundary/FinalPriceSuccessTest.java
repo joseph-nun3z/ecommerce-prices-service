@@ -1,23 +1,26 @@
 package com.github.josephnun3z.pricesservice.boundary;
 
 
-import com.github.josephnun3z.pricesservice.CorrectPriceRecommendationTestExpectation;
-import com.github.josephnun3z.pricesservice.RecommendedPriceTestBase;
+import com.github.josephnun3z.pricesservice.CorrectFinalPriceTestExpectation;
+import com.github.josephnun3z.pricesservice.FinalPriceTestBase;
 import io.restassured.RestAssured;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.server.LocalServerPort;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import java.util.stream.Stream;
 
-import static com.github.josephnun3z.pricesservice.CorrectPriceRecommendationTestExpectation.aTestExpectation;
+import static com.github.josephnun3z.pricesservice.CorrectFinalPriceTestExpectation.aTestExpectation;
 import static com.github.josephnun3z.pricesservice.RecommendedPriceTestCases.SUCCESS_TEST_CASES;
 
+@ExtendWith(SpringExtension.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-class RecommendedPriceSuccessTest extends RecommendedPriceTestBase {
+class FinalPriceSuccessTest extends FinalPriceTestBase {
 
     @LocalServerPort
     private int port;
@@ -29,7 +32,7 @@ class RecommendedPriceSuccessTest extends RecommendedPriceTestBase {
 
     @ParameterizedTest(name = "{index} {1}")
     @MethodSource("testExpectations")
-    void givenAPriceRequestExpectCorrectPriceRecommendations(CorrectPriceRecommendationTestExpectation expectation, String description) {
+    void givenAFinalPriceRequestExpectCorrectFinalPrice(CorrectFinalPriceTestExpectation expectation, String ignoredDescription) {
         assertExpectation(expectation);
     }
 
@@ -38,7 +41,7 @@ class RecommendedPriceSuccessTest extends RecommendedPriceTestBase {
             Arguments.of(
                 aTestExpectation().with($ -> {
                     $.testCaseNumber = 1;
-                    $.recommendedPrice = SUCCESS_TEST_CASES.get(1);
+                    $.expectedPrice = SUCCESS_TEST_CASES.get(1);
                     $.brandId = 1;
                     $.productId = 35455L;
                     $.startDate = "2020-06-14T10:00:00";
@@ -48,7 +51,7 @@ class RecommendedPriceSuccessTest extends RecommendedPriceTestBase {
             Arguments.of(
                 aTestExpectation().with($ -> {
                     $.testCaseNumber = 2;
-                    $.recommendedPrice = SUCCESS_TEST_CASES.get(2);
+                    $.expectedPrice = SUCCESS_TEST_CASES.get(2);
                     $.brandId = 1;
                     $.productId = 35455L;
                     $.startDate = "2020-06-14T16:00:00";
@@ -58,7 +61,7 @@ class RecommendedPriceSuccessTest extends RecommendedPriceTestBase {
             Arguments.of(
                 aTestExpectation().with($ -> {
                     $.testCaseNumber = 3;
-                    $.recommendedPrice = SUCCESS_TEST_CASES.get(3);
+                    $.expectedPrice = SUCCESS_TEST_CASES.get(3);
                     $.brandId = 1;
                     $.productId = 35455L;
                     $.startDate = "2020-06-14T21:00:00";
@@ -68,7 +71,7 @@ class RecommendedPriceSuccessTest extends RecommendedPriceTestBase {
             Arguments.of(
                 aTestExpectation().with($ -> {
                     $.testCaseNumber = 4;
-                    $.recommendedPrice = SUCCESS_TEST_CASES.get(4);
+                    $.expectedPrice = SUCCESS_TEST_CASES.get(4);
                     $.brandId = 1;
                     $.productId = 35455L;
                     $.startDate = "2020-06-15T10:00:00";
@@ -78,7 +81,7 @@ class RecommendedPriceSuccessTest extends RecommendedPriceTestBase {
             Arguments.of(
                 aTestExpectation().with($ -> {
                     $.testCaseNumber = 5;
-                    $.recommendedPrice = SUCCESS_TEST_CASES.get(5);
+                    $.expectedPrice = SUCCESS_TEST_CASES.get(5);
                     $.brandId = 1;
                     $.productId = 35455L;
                     $.startDate = "2020-06-16T21:00:00";

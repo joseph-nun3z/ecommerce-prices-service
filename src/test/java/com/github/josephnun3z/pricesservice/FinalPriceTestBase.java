@@ -1,6 +1,6 @@
 package com.github.josephnun3z.pricesservice;
 
-import com.github.josephnun3z.pricesservice.boundary.RecommendedPriceDto;
+import com.github.josephnun3z.pricesservice.boundary.FinalPriceDto;
 import org.springframework.http.HttpStatus;
 
 import static com.github.josephnun3z.pricesservice.testsupport.RestAssuredConfig.restAssuredConfig;
@@ -9,9 +9,9 @@ import static io.restassured.http.ContentType.JSON;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
 
-public class RecommendedPriceTestBase {
+public class FinalPriceTestBase {
 
-    protected final void assertExpectation(CorrectPriceRecommendationTestExpectation expectation) {
+    protected final void assertExpectation(CorrectFinalPriceTestExpectation expectation) {
         var result = given()
             .config(restAssuredConfig())
             .contentType(JSON)
@@ -20,7 +20,7 @@ public class RecommendedPriceTestBase {
             .queryParam("brandId", expectation.brandId())
             .when().get(UriFixtures.URI_RECOMMENDED_PRICE)
             .then().statusCode(HttpStatus.OK.value())
-            .extract().as(RecommendedPriceDto.class);
+            .extract().as(FinalPriceDto.class);
 
         assertThat(result, is(expectation.expectedPrice()));
     }

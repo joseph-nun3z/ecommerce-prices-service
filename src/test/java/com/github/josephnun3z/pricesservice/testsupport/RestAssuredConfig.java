@@ -23,7 +23,7 @@ public final class RestAssuredConfig {
             REST_ASSURED_CONFIG_REF.set(
                     io.restassured.config.RestAssuredConfig
                             .config()
-                            .objectMapperConfig(new ObjectMapperConfig(ObjectMapperType.JSONB))
+                            .objectMapperConfig(new ObjectMapperConfig(ObjectMapperType.JACKSON_2))
             );
         }
         return REST_ASSURED_CONFIG_REF.get();
