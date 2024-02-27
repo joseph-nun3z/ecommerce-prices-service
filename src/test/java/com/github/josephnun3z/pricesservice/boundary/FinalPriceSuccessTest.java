@@ -1,7 +1,7 @@
 package com.github.josephnun3z.pricesservice.boundary;
 
 
-import com.github.josephnun3z.pricesservice.CorrectFinalPriceTestExpectation;
+import com.github.josephnun3z.pricesservice.FinalPriceTestExpectation;
 import com.github.josephnun3z.pricesservice.FinalPriceTestBase;
 import io.restassured.RestAssured;
 import org.junit.jupiter.api.BeforeEach;
@@ -11,11 +11,12 @@ import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.server.LocalServerPort;
+import org.springframework.http.HttpStatus;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import java.util.stream.Stream;
 
-import static com.github.josephnun3z.pricesservice.CorrectFinalPriceTestExpectation.aTestExpectation;
+import static com.github.josephnun3z.pricesservice.FinalPriceTestExpectation.aTestExpectation;
 import static com.github.josephnun3z.pricesservice.RecommendedPriceTestCases.SUCCESS_TEST_CASES;
 
 @ExtendWith(SpringExtension.class)
@@ -32,7 +33,7 @@ class FinalPriceSuccessTest extends FinalPriceTestBase {
 
     @ParameterizedTest(name = "{index} {1}")
     @MethodSource("testExpectations")
-    void givenAFinalPriceRequestExpectCorrectFinalPrice(CorrectFinalPriceTestExpectation expectation, String ignoredDescription) {
+    void givenAFinalPriceRequestExpectCorrectFinalPrice(FinalPriceTestExpectation expectation, String ignoredDescription) {
         assertExpectation(expectation);
     }
 
@@ -45,6 +46,7 @@ class FinalPriceSuccessTest extends FinalPriceTestBase {
                     $.brandId = 1;
                     $.productId = 35455L;
                     $.startDate = "2020-06-14T10:00:00";
+                    $.expectedHttpCode = HttpStatus.OK.value();
                 }).createExpectation(),
                 "Test 1: petición a las 10:00 del día 14 del producto 35455 para la brand 1 (ZARA)"
             ),
@@ -55,6 +57,7 @@ class FinalPriceSuccessTest extends FinalPriceTestBase {
                     $.brandId = 1;
                     $.productId = 35455L;
                     $.startDate = "2020-06-14T16:00:00";
+                    $.expectedHttpCode = HttpStatus.OK.value();
                 }).createExpectation(),
                 "Test 2: petición a las 16:00 del día 14 del producto 35455 para la brand 1 (ZARA)"
             ),
@@ -65,6 +68,7 @@ class FinalPriceSuccessTest extends FinalPriceTestBase {
                     $.brandId = 1;
                     $.productId = 35455L;
                     $.startDate = "2020-06-14T21:00:00";
+                    $.expectedHttpCode = HttpStatus.OK.value();
                 }).createExpectation(),
                 "Test 3: petición a las 21:00 del día 14 del producto 35455 para la brand 1 (ZARA)"
             ),
@@ -75,6 +79,7 @@ class FinalPriceSuccessTest extends FinalPriceTestBase {
                     $.brandId = 1;
                     $.productId = 35455L;
                     $.startDate = "2020-06-15T10:00:00";
+                    $.expectedHttpCode = HttpStatus.OK.value();
                 }).createExpectation(),
                 "Test 4: petición a las 10:00 del día 15 del producto 35455 para la brand 1 (ZARA)"
             ),
@@ -85,6 +90,7 @@ class FinalPriceSuccessTest extends FinalPriceTestBase {
                     $.brandId = 1;
                     $.productId = 35455L;
                     $.startDate = "2020-06-16T21:00:00";
+                    $.expectedHttpCode = HttpStatus.OK.value();
                 }).createExpectation(),
                 "Test 5: petición a las 21:00 del día 16 del producto 35455 para la brand 1 (ZARA)"
             )

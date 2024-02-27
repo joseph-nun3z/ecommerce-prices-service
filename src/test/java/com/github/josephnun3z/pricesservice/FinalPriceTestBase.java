@@ -11,7 +11,7 @@ import static org.hamcrest.Matchers.is;
 
 public class FinalPriceTestBase {
 
-    protected final void assertExpectation(CorrectFinalPriceTestExpectation expectation) {
+    protected final void assertExpectation(FinalPriceTestExpectation expectation) {
         var result = given()
             .config(restAssuredConfig())
             .contentType(JSON)
@@ -19,9 +19,11 @@ public class FinalPriceTestBase {
             .queryParam("productId", expectation.productId())
             .queryParam("brandId", expectation.brandId())
             .when().get(UriFixtures.URI_RECOMMENDED_PRICE)
-            .then().statusCode(HttpStatus.OK.value())
-            .extract().as(FinalPriceDto.class);
+            .then().statusCode(expectation.expectedHttpCode())
+            .extract();
 
-        assertThat(result, is(expectation.expectedPrice()));
+        if (HttpStatus.OK.value() == expectation.expectedHttpCode()) {
+            assertThat(result.as(FinalPriceDto.class), is(expectation.expectedPrice()));
+        }
     }
 }
